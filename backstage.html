@@ -1,0 +1,99 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+  <!--模态框-->
+  <link rel="stylesheet" href="src/ngDialog/ngDialog.css">
+  <link rel="stylesheet" href="src/ngDialog/ngDialog-theme-default.css">
+  <!--富文本编辑器-->
+  <link href="src/umeditor/themes/default/_css/umeditor.css" type="text/css" rel="stylesheet">
+  <script type="text/javascript" src="src/umeditor/third-party/jquery.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="src/umeditor/third-party/template.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="src/umeditor/umeditor.config.js"></script>
+  <script type="text/javascript" src="src/umeditor/dist/utf8-php/umeditor.js"></script>
+  <script type="text/javascript" src="src/umeditor/lang/zh-cn/zh-cn.js"></script>
+  <!--css-->
+  <link rel="stylesheet" type="text/css" href="css/backstage.css">
+  <title>后台管理系统</title>
+</head>
+<body ng-app="backstage" ng-controller="backCtrl">
+<div class="wrap d-flex flex-column flex-md-row">
+  <nav class="p-0 navbar navbar-expand-md bg-dark navbar-dark d-flex flex-column ">
+    <div class="d-flex justify-content-between w-100 p-2 p-md-0 pt-md-2 pb-md-2">
+      <!--title-->
+      <a class="text-md-center d-inline-block w-100 m-0 pl-3 pr-3  navbar-brand" href="#">萝卜多后台管理</a>
+      <!-- Toggler/collapsibe Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <!-- 折叠导航-->
+    <div class="collapse navbar-collapse w-100 border-top align-items-start" id="collapsibleNavbar">
+      <!--折叠-->
+      <ul class="w-100 pt-4">
+        <li class="w-100 poi" ng-repeat="x in nav">
+          <div ng-click="firstToggler()" ng-class="{'borderLeftWhite':x.state,'bglight':x.flight}" class="first p-2 pr-5 p-md-2 d-flex justify-content-between align-items-center borderLeftdark">
+            <div class="d-flex justify-content-between align-items-center">
+              <i class="fa fa-pencil"></i>
+              <span class="text-white pl-2">{{x.first}}</span>
+            </div>
+            <i class="fa" ng-class="{true:'fa-angle-down',false:'fa-angle-left'}[x.state]"></i>
+          </div>
+
+          <ul class="w-100" ng-show="x.state">
+            <li class="second w-100 poi p-2 pl-5" ng-class="{'bglight':y.light}" ng-repeat="y in x.second" ng-click="secondLink()" >
+              <a href="">{{y.name}}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="right-layout bg-light">
+    <!--头部导航-->
+    <div class="border-bottom bg-white">
+      <ul class="nav justify-content-end pt-2 pb-2">
+        <li class="nav-item">
+          <a class="nav-link text-primary" href="">管理员</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-primary border-right border-left" href="">User</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" ng-click="logout()" title="退出"><img class="out" src="img/out.png" alt=""></a>
+        </li>
+      </ul>
+    </div>
+    <!--列表页-->
+    <div class="container-fluid pt-4 ">
+      <div ui-view=""></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="js/jquery-3.3.1.js"></script>
+<!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
+<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="js/angular.js"></script>
+<script src="js/angular-ui-router.js"></script>
+<script src="src/pagination/tm.pagination.js"></script>
+<script src="src/angularFileUpload/angular-file-upload.js"></script>
+<script src="src/ngDialog/ngDialog.js"></script>
+
+<!---->
+<script src="js/backstage.js"></script>
+<script src="view/list.js"></script>
+<script src="view/addlist.js"></script>
+<script src="view/editlist.js"></script>
+</body>
+</html>

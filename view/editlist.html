@@ -1,0 +1,134 @@
+<!--新增-->
+<div class="border rounded">
+  <div class="font-weight-bold p-2 bg-light border-bottom">编辑Article</div>
+  <form class="pt-2 pl-5 pr-5" id="dform" novalidate>
+    <!--标题-->
+    <div class="form-group row">
+      <label class="col-lg-2 font-weight-bold col-form-label text-lg-right">标题名称</label>
+      <div class="col-lg-8">
+        <input class="form-control" type="text" name="title" ng-model="dtitle" required>
+      </div>
+    </div>
+    <!--类型-->
+    <div class="form-group row">
+      <label class="col-lg-2 font-weight-bold col-form-label text-lg-right">类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型</label>
+      <div class="col-lg-3">
+        <select class="form-control" name="type" ng-model="dtype" required>
+          <option selected value="">全部</option>
+          <option value="0">首页Banner</option>
+          <option value="1">找职位Banner</option>
+          <option value="2">找精英Banner</option>
+          <option value="3">行业大图Banner</option>
+        </select>
+      </div>
+      <div class="col-12 col-lg-3">
+        <select class="form-control" ng-if="dtype == 3" name="industry" ng-model="dindustry" required>
+          <option value="">请选择</option>
+          <option value="0">移动互联网</option>
+          <option value="1">电子商务</option>
+          <option value="2">企业服务</option>
+          <option value="3">020</option>
+          <option value="4">教育</option>
+          <option value="5">金融</option>
+          <option value="6">游戏</option>
+        </select>
+      </div>
+    </div>
+    <!--说明-->
+    <div class="form-group row">
+      <label class="col-lg-2 font-weight-bold col-form-label text-lg-right">说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明</label>
+      <div class="col-lg-8">
+        <!--<input class="form-control" type="text" name="content" ng-model="dcontent" required>-->
+        <!--富文本-->
+        <script type="text/javascript" src="src/umeditor/third-party/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="src/umeditor/third-party/template.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="src/umeditor/umeditor.config.js"></script>
+        <script type="text/javascript" src="src/umeditor/dist/utf8-php/umeditor.js"></script>
+        <script type="text/javascript" src="src/umeditor/lang/zh-cn/zh-cn.js"></script>
+        <div id="myEditor" name="content"></div>
+
+      </div>
+    </div>
+    <!--跳转链接-->
+    <div class="form-group row">
+      <label class="col-lg-2 font-weight-bold col-form-label text-lg-right">跳转链接</label>
+      <div class="col-lg-8">
+        <input class="form-control" type="text" name="url" ng-model="durl" required>
+      </div>
+    </div>
+    <!--配图-->
+    <div class="form-group row">
+      <div class="col-lg-2 font-weight-bold col-form-label text-lg-right">配&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图
+      </div>
+      <div class="col-lg-8">
+        <label class="btn btn-primary" for="imageUp">选择文件</label>
+        <!--<input class="d-none" type="file" name="" id="imageUp" accept="image/png,image/jpg">-->
+        <input class="d-none" type="file" nv-file-select="" uploader="uploader" id="imageUp" accept="image/*" required />
+      </div>
+      <!--图片预览-->
+      <div class="col-12 col-lg-6 offset-lg-2" >
+        <img class="img-fluid" ng-src="{{imgURL}}" src="" alt="配图预览">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-lg-8 offset-lg-2">
+        <!--图片上传信息-->
+        <div class="table-responsive">
+          <table class="table table-sm">
+            <thead>
+            <tr>
+              <th >图片名</th>
+              <th ng-show="uploader.isHTML5">文件大小</th>
+              <th ng-show="uploader.isHTML5">进度</th>
+              <th>状态</th>
+              <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in uploader.queue track by $index" ng-if="$first">
+              <!--文件名-->
+              <td> <strong>{{ item.file.name }}</strong> </td>
+              <!--文件大小|number:2,保留2位过滤器-->
+              <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+             <!--进度条-->
+              <td ng-show="uploader.isHTML5">
+                <div class="progress" style="margin-bottom: 0;">
+                  <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                </div>
+              </td>
+              <!--状态-->
+              <td>
+                <span ng-show="item.isSuccess"><i class="fa fa-check" style="color: #000;"></i></span>
+                <span ng-show="item.isCancel"><i class="fa fa-ban" style="color: #000;"></i></span>
+                <span ng-show="item.isError"><i class="fa fa-remove" style="color: #000;"></i></span>
+              </td>
+              <!--操作-->
+              <td>
+                <button type="button" class="btn btn-success btn-sm" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                  <i class="fa fa-arrow-circle-o-up" style="font-size: 16px"></i> 上传
+                </button>
+                <button type="button" class="btn btn-warning btn-sm" style="color: #ffffff;" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                  <i class="fa fa-ban" style="font-size: 16px"></i> 取消
+                </button>
+                <button type="button" class="btn btn-danger btn-sm" ng-click="item.remove()">
+                  <i class="fa fa-trash-o" style="font-size: 16px"></i> 删除
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--button-->
+    <div class="form-group row">
+      <div class="col-lg-8 offset-lg-2 col-12 d-flex justify-content-between align-items-center flex-wrap">
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn btn-success mr-1" type="button" ng-click="pubArticle()" ng-disabled="dform.$invalid||imgURL==undefined">立即上线</button>
+          <button class="btn btn-success" type="button" ng-click="saveArticle()" ng-disabled="dform.$invalid||imgURL==undefined">存为草稿</button>
+        </div>
+        <button class="btn btn-light border" type="button" ng-click="cancel()">取消</button>
+      </div>
+    </div>
+  </form>
+</div>

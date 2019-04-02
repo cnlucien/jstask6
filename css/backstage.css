@@ -1,0 +1,190 @@
+@charset "UTF-8";
+/*=======================================reset======================================*/
+/*=============================*/
+/*==================================*/
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+input, button {
+  outline: none !important;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, figure, form, blockquote, label {
+  margin: 0;
+}
+
+ul, ol, li, dl, dd, a, button {
+  margin: 0;
+  padding: 0;
+}
+
+a, a:link, a:hover, a:active {
+  text-decoration: none;
+  cursor: pointer !important;
+  color: #ffffff;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+/* ---------------------zxx.lib.css----------------------- */
+/* display */
+.dn {
+  display: none;
+}
+
+.di {
+  display: inline;
+}
+
+.db {
+  display: block;
+}
+
+.dib {
+  display: inline-block;
+}
+
+/* vertical-align */
+.vm {
+  vertical-align: middle;
+}
+
+/* text-align */
+.tc {
+  text-align: center;
+}
+
+.tr {
+  text-align: right;
+}
+
+.tl {
+  text-align: left;
+}
+
+.tj {
+  text-align: justify;
+}
+
+/* font-style */
+.b {
+  font-weight: 500;
+}
+
+/* float */
+.l {
+  float: left;
+}
+
+.r {
+  float: right;
+}
+
+/* position */
+.rel {
+  position: relative;
+}
+
+.abs {
+  position: absolute;
+}
+
+/*z-index*/
+.zx1 {
+  z-index: 1;
+}
+
+.zx2 {
+  z-index: 2;
+}
+
+/* cursor */
+.poi {
+  cursor: pointer;
+}
+
+.def {
+  cursor: default;
+}
+
+/* cursor */
+.poi {
+  cursor: pointer;
+}
+
+/* css3杩囨浮鍔ㄧ敾鏁堟灉 */
+.trans {
+  -webkit-transition: all linear 0.3s;
+  transition: all linear 0.3s;
+}
+
+nav {
+  width: 250px;
+}
+@media screen and (max-width: 768px) {
+  nav {
+    width: 100%;
+  }
+}
+.fa {
+  font-size: 22px;
+  color: white;
+}
+.right-layout {
+  flex-grow: 1;
+}
+.out {
+  width: 18px;
+}
+td, th {
+  text-align: center;
+  vertical-align: middle !important;
+}
+td {
+  max-width: 180px;
+  word-wrap: break-word;
+}
+@media screen and (min-width: 768px) {
+  td {
+    word-break: break-all;
+  }
+}
+
+/*# sourceMappingURL=backstage.css.map */
+.first:hover {
+  background-color: rgba(100, 108, 114, 0.83);
+  border-left: 4px solid rgba(100, 108, 114, 0.83);
+}
+.second:hover{
+  background-color: rgba(100, 108, 114, 0.83);
+}
+.bglight {
+  background-color: rgba(100, 108, 114, 0.83);
+}
+.borderLeftdark{
+  border-left: 4px solid #343a40;
+}
+.borderLeftWhite{
+  border-left: 4px solid white;
+}
+.borderLeftWhite:hover{
+  border-left: 4px solid white;
+}
+.page-list .page-total input, .page-list .page-total select{height: 26px; border: 1px solid #ddd;}
+.page-list .page-total input {width: 40px; padding-left:3px;}
+.page-list .page-total select {width: 50px;}
+
